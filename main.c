@@ -74,7 +74,17 @@ int main() {
 
 /* Responsable alejandro*/
 void numeroRomano(){
+char numRoman[10];
+    printf("---> Menu numero romano\n"
+           "Ingrese un numero romano...");
 
+    scanf("%s", numRoman);
+    for (int i = 0; i < strlen(numRoman); ++i) {
+        numRoman[i] = toupper(numRoman[i]);
+    }
+
+    printf("El valor [ %s ] en numeros decimales es: %d\n", numRoman, funtion_numRoman(numRoman));
+    pressEnter();
 }
 
 /* Responsable andres*/
