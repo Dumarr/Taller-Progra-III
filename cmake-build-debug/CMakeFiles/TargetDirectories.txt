@@ -1,3 +1,3 @@
-C:/Users/andre/OneDrive/Documentos/GitHub/Taller-Progra-III/cmake-build-debug/CMakeFiles/Taller_Progra_III.dir
-C:/Users/andre/OneDrive/Documentos/GitHub/Taller-Progra-III/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/andre/OneDrive/Documentos/GitHub/Taller-Progra-III/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III/cmake-build-debug/CMakeFiles/Taller_Progra_III.dir
+C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III/cmake-build-debug/CMakeFiles/rebuild_cache.dir

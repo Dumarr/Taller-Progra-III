@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 void numeroRomano();
 
@@ -29,34 +32,49 @@ int main() {
         // limpiar el escaner
         fflush(stdin);
         switch (opcion) {
-            case '1':
+            case 1:
                 numeroRomano();
                 break;
-            case '2':
+            case 2:
                 factoresPrimos();
                 break;
-            case '3':
-                nombresPropios();
+            case 3:
+                printf("Nombres propios \n");
+
+                char cadena[100];
+                char palabraAMantenerEnMinusculas[100];
+
+                printf("Ingrese la cadena de texto: ");
+                scanf("%[^\n]s", cadena);
+                getchar();  // Consumir el carácter de nueva línea en el búfer
+
+                printf("Ingrese la palabra a mantener en minusculas: ");
+                scanf("%[^\n]s", palabraAMantenerEnMinusculas);
+
+                nombresPropios(cadena, palabraAMantenerEnMinusculas);
+
+                printf("Nombre propio en minuscula: %s\n", cadena);
+
                 break;
-            case '4':
+            case 4:
                 numerosEgolatras();
                 break;
-            case '5':
+            case 5:
                 numerosAmigos();
                 break;
-            case '6':
+            case 6:
                 fechas();
                 break;
-            case '7':
+            case 7:
                 productopunto();
                 break;
-            case '8':
+            case 8:
                 multiplicacionMatrices();
                 break;
-            case '9':
+            case 9:
                 matrizMagica();
                 break;
-            case '10':
+            case 10:
                 printf("Gracias por usar el programa");
                 break;
             default:
@@ -77,8 +95,29 @@ void factoresPrimos(){
 
 }
 
-/* Responsable andres*/
-void nombresPropios(){
+/* Responsable dumar*/
+void nombresPropios(char cadena[], char palabraAMantenerEnMinusculas[]){
+    int i;
+    int mayuscula = 1;
+
+    for(i = 0; cadena[i] != '\0'; i++) {
+        // Convertir a minúsculas
+        cadena[i] = tolower(cadena[i]);
+
+        // Capitalizar el primer carácter de cada palabra
+        if (mayuscula && (cadena[i] >= 'a' && cadena[i] <= 'z')) {
+            cadena[i] = toupper(cadena[i]);
+            mayuscula = 0;
+        }
+            // Restablecer la bandera de mayúscula al encontrar un espacio
+        else if (cadena[i] == ' ') {
+            mayuscula = 1;
+        }
+            // Mantener la palabra especificada en minúsculas
+        else if (palabraAMantenerEnMinusculas[0] != '\0' && strncmp(&cadena[i], palabraAMantenerEnMinusculas, strlen(palabraAMantenerEnMinusculas)) == 0) {
+            mayuscula = 1;
+        }
+    }
 
 }
 
@@ -92,7 +131,7 @@ void numerosAmigos(){
 
 }
 
-/* Responsable andres*/
+/* Responsable dumar*/
 void fechas(){
 
 }
