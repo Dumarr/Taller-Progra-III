@@ -13,7 +13,7 @@ void factoresPrimos();
 
 void nombresPropios();
 
-void numerosEgolatras();
+int numerosEgolatras(int);
 
 void numerosAmigos();
 
@@ -71,7 +71,8 @@ int main() {
 
                 break;
             case 4:
-                numerosEgolatras();
+                int a = 1;
+                numerosEgolatras( a);
                 break;
             case 5:
                 numerosAmigos();
@@ -179,7 +180,7 @@ void nombresPropios(char cadena[], char palabraAMantenerEnMinusculas[]){
 }
 
 /* Responsable alejandro*/
-void numerosEgolatras(){
+int numerosEgolatras(int b){
 
 }
 
