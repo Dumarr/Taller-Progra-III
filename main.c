@@ -7,7 +7,7 @@
 #include <math.h>
 #include <conio.h>
 
-void numeroRomano();
+int numeroRomano( char[]);
 
 void factoresPrimos();
 
@@ -37,7 +37,17 @@ int main() {
         fflush(stdin);
         switch (opcion) {
             case 1:
-                numeroRomano();
+                char numRoman[10];
+                printf("---> Menu numero romano\n"
+                "Ingrese un numero romano...");
+
+                scanf("%s", numRoman);
+                for (int i = 0; i < strlen(numRoman); ++i) {
+                numRoman[i] = toupper(numRoman[i]);
+                }
+
+                printf("El valor [ %s ] en numeros decimales es: %d\n", numRoman, numeroRomano(numRoman));
+
                 break;
             case 2:
                 factoresPrimos();
@@ -90,18 +100,51 @@ int main() {
 }
 
 /* Responsable alejandro*/
-void numeroRomano(){
-char numRoman[10];
-    printf("---> Menu numero romano\n"
-           "Ingrese un numero romano...");
+int numeroRomano(char num[10]){
+    int number[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int addition = 0;
 
-    scanf("%s", numRoman);
-    for (int i = 0; i < strlen(numRoman); ++i) {
-        numRoman[i] = toupper(numRoman[i]);
+    for (int i = 0; i < strlen(num); ++i) {
+        switch (num[i]) {
+
+            case 'M':
+                number[i] = 1000;
+                break;
+            case 'D':
+                number[i] = 500;
+                break;
+            case 'C':
+                number[i] = 100;
+                break;
+            case 'L':
+                number[i] = 50;
+                break;
+            case 'X':
+                number[i] = 10;
+                break;
+            case 'V':
+                number[i] = 5;
+                break;
+            case 'I':
+                number[i] = 1;
+                break;
+
+            default:
+                printf("\n Has introducido caracteres invalidos");
+                number[i] = 0;
+                break;
+        }
     }
+    for (int i = 0; i < strlen(num); ++i) {
+        if (number[i] >= number[i + 1]) {
+            addition += number[i];
+        } else {
+            addition -= number[i];
+        }
+    }
+    return addition;
 
-    printf("El valor [ %s ] en numeros decimales es: %d\n", numRoman, funtion_numRoman(numRoman));
-    pressEnter();
+
 }
 
 /* Responsable andres*/
