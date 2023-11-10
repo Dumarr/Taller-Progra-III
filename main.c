@@ -71,8 +71,17 @@ int main() {
 
                 break;
             case 4:
-                int a = 1;
-                numerosEgolatras( a);
+               int number;
+               printf("---> Menu numero egolatra\n"
+                "Digite un numero...");
+               scanf("%d", &number);
+               fflush(stdin);
+
+               if (numerosEgolatras(number) == 1) {
+                    printf("El numero %d es un numero egolatra\n\n", number);
+               } else {
+                    printf("El numero %d NO es un numero egolatra\n\n", number);
+               }
                 break;
             case 5:
                 numerosAmigos();
@@ -180,8 +189,24 @@ void nombresPropios(char cadena[], char palabraAMantenerEnMinusculas[]){
 }
 
 /* Responsable alejandro*/
-int numerosEgolatras(int b){
+int numerosEgolatras(int number){
+int adittion = 0;
+    int size = floor(log10(number)) + 1;
+    char numberString[size + 1];
 
+    sprintf(numberString, "%d", number);
+
+    for (int i = 0; i < size; ++i) {
+        int now = numberString[i] - '0';
+        int potency = pow(now, size);
+        adittion += potency;
+    }
+
+    if (adittion == number) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 /* Responsable andres*/
