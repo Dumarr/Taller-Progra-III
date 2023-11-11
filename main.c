@@ -6,8 +6,11 @@
 #include <ctype.h>
 #include <math.h>
 #include <conio.h>
+#include <time.h>
 
-int numeroRomano( char[]);
+
+
+int numeroRomano(char[]);
 
 void factoresPrimos();
 
@@ -37,7 +40,7 @@ int main() {
         fflush(stdin);
         switch (opcion) {
             case 1:
-                char numRoman[10];
+               char numRoman[10];
                 printf("---> Menu numero romano\n"
                 "Ingrese un numero romano...");
 
@@ -60,7 +63,7 @@ int main() {
 
                 printf("Ingrese la cadena de texto: ");
                 scanf("%[^\n]s", cadena);
-                getchar();  // Consumir el carácter de nueva línea en el búfer
+                getchar();
 
                 printf("Ingrese la palabra a mantener en minusculas: ");
                 scanf("%[^\n]s", palabraAMantenerEnMinusculas);
@@ -87,7 +90,10 @@ int main() {
                 numerosAmigos();
                 break;
             case 6:
-                fechas();
+                printf("fechas \n");
+                char message[] = "Introduce la fecha (formato dd/MM/yyyy): ";
+                fechas(message);
+
                 break;
             case 7:
                 productopunto();
@@ -96,8 +102,17 @@ int main() {
                 multiplicacionMatrices();
                 break;
             case 9:
-                matrizMagica();
+                printf("Ingrese un numero impar para generar la matriz ");
+                int n;
+                scanf("%d", &n);
+
+                while (n%2==0){
+                    printf("Debe ingresar un numero impar");
+                    scanf("%d", &n);
+                }
+                matrizMagica(n);
                 break;
+
             case 10:
                 printf("Gracias por usar el programa");
                 break;
@@ -163,7 +178,7 @@ void factoresPrimos(){
 }
 
 /* Responsable dumar*/
-void nombresPropios(char cadena[], char palabraAMantenerEnMinusculas[]){
+void nombresPropios(char cadena[], char wordToKeep[]){
     int i;
     int mayuscula = 1;
 
@@ -171,17 +186,17 @@ void nombresPropios(char cadena[], char palabraAMantenerEnMinusculas[]){
         // Convertir a minúsculas
         cadena[i] = tolower(cadena[i]);
 
-        // Capitalizar el primer carácter de cada palabra
+
         if (mayuscula && (cadena[i] >= 'a' && cadena[i] <= 'z')) {
             cadena[i] = toupper(cadena[i]);
             mayuscula = 0;
         }
-            // Restablecer la bandera de mayúscula al encontrar un espacio
+
         else if (cadena[i] == ' ') {
             mayuscula = 1;
         }
-            // Mantener la palabra especificada en minúsculas
-        else if (palabraAMantenerEnMinusculas[0] != '\0' && strncmp(&cadena[i], palabraAMantenerEnMinusculas, strlen(palabraAMantenerEnMinusculas)) == 0) {
+
+        else if (wordToKeep[0] != '\0' && strncmp(&cadena[i], wordToKeep, strlen(wordToKeep)) == 0) {
             mayuscula = 1;
         }
     }
@@ -215,9 +230,51 @@ void numerosAmigos(){
 }
 
 /* Responsable dumar*/
-void fechas(){
+void fechas(char message[]) {
 
+
+    char input[20];
+    struct tm tm_date;
+    time_t timestamp;
+
+    while (1) {
+        printf("%s", message);
+        scanf("%s", input);
+
+        memset(&tm_date, 0, sizeof(struct tm));
+
+
+        if (sscanf(input, "%d/%d/%d", &tm_date.tm_mday, &tm_date.tm_mon, &tm_date.tm_year) == 3) {
+
+            tm_date.tm_mon--;
+
+
+            tm_date.tm_year -= 1900;
+
+
+            timestamp = mktime(&tm_date);
+
+
+            if (timestamp != -1) {
+                break;
+            } else {
+                printf("Fecha no valida vuelva a digitar.\n");
+            }
+        } else {
+            printf("Formato incorrecto, vuelva a intentar.\n");
+        }
+    }
+
+
+    struct tm *formatted_date = localtime(&timestamp);
+
+
+    char formatted_output[50];
+    strftime(formatted_output, sizeof(formatted_output), "%A, %d de %B de %Y", formatted_date);
+    printf("%s\n", formatted_output);
 }
+
+
 
 /* Responsable alejandro*/
 void productopunto(){
@@ -230,7 +287,49 @@ void multiplicacionMatrices(){
 }
 
 /* Responsable dumar*/
-void matrizMagica(){
+void matrizMagica(int n) {
 
+
+    int matriz[n][n];
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            matriz[i][j] = 0;
+        }
+    }
+
+    int fila = 0;
+    int columna = n / 2;
+
+    for (int numero = 1; numero <= n * n; ++numero) {
+        matriz[fila][columna] = numero;
+
+        fila--;
+        columna++;
+
+        if (fila < 0) {
+            fila = n - 1;
+        }
+
+        if (columna == n) {
+            columna = 0;
+        }
+
+        if (matriz[fila][columna] != 0) {
+            fila += 2;
+            columna--;
+
+            if (fila >= n) {
+                fila -= n;
+            }
+        }
+    }
+    printf("Matriz Magica de orden %d:\n", n);
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            printf("%3d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
 }
 
