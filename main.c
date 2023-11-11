@@ -22,24 +22,25 @@ int primo(int number);
 bool si_primo(int number);
 void ingfactor(int factorp);
 
-void nombresPropios();
+void nombresPropios(char [], char []);
 
 int numerosEgolatras(int);
 
 bool numerosAmigos(int ,int);
 
-void fechas();
+void fechas(char[] );
 
 void productopunto();
 
 void multiplicacionMatrices();
 
-void matrizMagica();
+void matrizMagica(int );
 
 int main() {
     system("cls");
     int opcion;
     do {
+        fflush(stdin);
         printf("\nBienvenido al programa \nSelecciones una opcion: "
            "\n1. Numero Romano \n2. Factores Primos \n3. Nombres Propios \n4. Numeros Egolatras \n5. Numeros Amigos "
            "\n6. Fechas \n7. Producto Punto \n8. Multiplicacion de Matrices \n9. Matriz Magica \n10. Salir \n");
@@ -325,7 +326,7 @@ int adittion = 0;
 
 /* Responsable andres*/
 int sumaDivisoresPropios(int n) {
-    int suma = 1; // Inicializamos con 1 porque 1 siempre es divisor propio
+    int suma = 1;
 
     for (int i = 2; i <= n / 2; ++i) {
         if (n % i == 0) {
@@ -398,7 +399,11 @@ void productopunto(){
 }
 
 /* Responsable andres*/
+
+//metodo para rellenar la matriz
+//metodo para multiplicar las matrices
 void multiplicacionMatrices(){
+
 
 }
 
