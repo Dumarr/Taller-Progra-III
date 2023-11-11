@@ -7,18 +7,26 @@
 #include <math.h>
 #include <conio.h>
 #include <time.h>
+#include <stdbool.h>
 
+static int nfactores = 0;
+static bool factores = false;
 
 
 int numeroRomano(char[]);
 
-void factoresPrimos();
+void factoresPrimos(int);
+void getfactores(char *mensaje);
+void desmontar_factor(int number);
+int primo(int number);
+bool si_primo(int number);
+void ingfactor(int factorp);
 
 void nombresPropios();
 
 int numerosEgolatras(int);
 
-void numerosAmigos();
+bool numerosAmigos(int ,int);
 
 void fechas();
 
@@ -32,7 +40,7 @@ int main() {
     system("cls");
     int opcion;
     do {
-        printf("Bienvenido al programa \nSelecciones una opcion: "
+        printf("\nBienvenido al programa \nSelecciones una opcion: "
            "\n1. Numero Romano \n2. Factores Primos \n3. Nombres Propios \n4. Numeros Egolatras \n5. Numeros Amigos "
            "\n6. Fechas \n7. Producto Punto \n8. Multiplicacion de Matrices \n9. Matriz Magica \n10. Salir \n");
         scanf("%d", &opcion);
@@ -40,9 +48,9 @@ int main() {
         fflush(stdin);
         switch (opcion) {
             case 1:
-               char numRoman[10];
                 printf("---> Menu numero romano\n"
                 "Ingrese un numero romano...");
+               char numRoman[10];
 
                 scanf("%s", numRoman);
                 for (int i = 0; i < strlen(numRoman); ++i) {
@@ -53,7 +61,7 @@ int main() {
 
                 break;
             case 2:
-                factoresPrimos();
+                getfactores("Ingrese un numero: ");
                 break;
             case 3:
                 printf("Nombres propios \n");
@@ -74,9 +82,9 @@ int main() {
 
                 break;
             case 4:
-               int number;
                printf("---> Menu numero egolatra\n"
                 "Digite un numero...");
+               int number;
                scanf("%d", &number);
                fflush(stdin);
 
@@ -87,7 +95,20 @@ int main() {
                }
                 break;
             case 5:
-                numerosAmigos();
+                printf("Numeros amigos \n");
+                int num1, num2;
+
+                printf("Ingrese el primer número: ");
+                scanf("%d", &num1);
+
+                printf("Ingrese el segundo número: ");
+                scanf("%d", &num2);
+
+                if (numerosAmigos(num1,num2)) {
+                    printf("%d y %d son números amigos.\n", num1, num2);
+                } else {
+                    printf("%d y %d NO son números amigos.\n", num1, num2);
+                }
                 break;
             case 6:
                 printf("fechas \n");
@@ -173,8 +194,86 @@ int numeroRomano(char num[10]){
 }
 
 /* Responsable andres*/
-void factoresPrimos(){
+void getfactores(char *mensaje) {
+    int number;
+    bool seguir;
 
+    do {
+        tryagain:
+        seguir = false;
+        printf("%s", mensaje);
+        if (scanf("%d", &number) != 1) {
+            printf("Inválido, debe ingresar un número\n");
+            fflush(stdin);
+            seguir = true;
+            goto tryagain;
+        }
+        desmontar_factor(number);
+    } while (seguir);
+}
+
+void desmontar_factor(int number) {
+    int producto = 1;
+    int number1 = number;
+
+    int factorp = 2;
+    do {
+        int subfactor = number1 % factorp;
+        if (subfactor == 0) {
+            number1 /= factorp;
+            producto *= factorp;
+            nfactores++;
+        } else {
+            if (nfactores > 0) {
+                ingfactor(factorp);
+            }
+            factorp = primo(factorp);
+        }
+    } while (producto != number);
+    ingfactor(factorp);
+}
+
+int primo(int number) {
+    do {
+        number++;
+    } while (!si_primo(number));
+    return number;
+}
+
+bool si_primo(int number) {
+    if (number <= 0) {
+        return false;
+    }
+    int cant_divisores = 0;
+    bool divisores = false;
+    int rango = (int)sqrt(number);
+    int i = 2;
+    while (i <= rango && !divisores) {
+        if (number % i == 0) {
+            cant_divisores++;
+            divisores = true;
+        }
+        i++;
+    }
+    if (cant_divisores > 0 || number == 1) {
+        return false;
+    }
+    return true;
+}
+
+void ingfactor(int factorp) {
+    if (factores) {
+        printf(" X");
+    } else {
+        factores = true;
+    }
+
+    if (nfactores == 1) {
+        printf(" %d", factorp);
+    } else {
+        printf(" %d^%d", factorp, nfactores);
+    }
+    nfactores = 0;
 }
 
 /* Responsable dumar*/
@@ -225,8 +324,25 @@ int adittion = 0;
 }
 
 /* Responsable andres*/
-void numerosAmigos(){
+int sumaDivisoresPropios(int n) {
+    int suma = 1; // Inicializamos con 1 porque 1 siempre es divisor propio
 
+    for (int i = 2; i <= n / 2; ++i) {
+        if (n % i == 0) {
+            suma += i;
+        }
+    }
+
+    return suma;
+}
+
+bool numerosAmigos(int num1, int num2) {
+
+    if (sumaDivisoresPropios(num1) == num2 && sumaDivisoresPropios(num2) == num1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /* Responsable dumar*/

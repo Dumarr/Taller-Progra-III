@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III/cmake-build-debug"
+			"value" : "c:/Users/andre/Documents/GitHub/Taller-Progra-III/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -431,7 +431,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/andre/Documents/GitHub/Taller-Progra-III/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -503,7 +503,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III"
+			"value" : "C:/Users/andre/Documents/GitHub/Taller-Progra-III"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1119,7 +1119,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III/cmake-build-debug"
+			"value" : "C:/Users/andre/Documents/GitHub/Taller-Progra-III/cmake-build-debug"
 		},
 		{
 			"name" : "Taller_Progra_III_IS_TOP_LEVEL",
@@ -1143,7 +1143,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/dumar/Desktop/5to Semestre/Progra III/Taller C/Taller-Progra-III"
+			"value" : "C:/Users/andre/Documents/GitHub/Taller-Progra-III"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
