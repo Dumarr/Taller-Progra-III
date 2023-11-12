@@ -30,7 +30,7 @@ bool numerosAmigos(int ,int);
 
 void fechas(char[] );
 
-void productopunto();
+int productopunto(int[],int[],int);
 
 int**  llenarMatriz(int, int);
 int** multiplicacionMatrices(int **,int, int, int **, int, int);
@@ -119,7 +119,35 @@ int main() {
 
                 break;
             case 7:
-                productopunto();
+               printf("---> Menu producto punto\n"
+                       "- Ingrese el tamanho del vector A:");
+                int sizeA, sizeB;
+                scanf("%d", &sizeA);
+
+                printf("- Ingrese el tamanho del vector B:");
+                scanf("%d", &sizeB);
+
+                if (sizeA == sizeB) {
+                    int matrizA[sizeA], matrizB[sizeB];
+
+                    for (int i = 0; i < sizeA; i++) {
+                        printf("A [%d] =", i + 1);
+                        scanf("%d", &matrizA[i]);
+                        fflush(stdin);
+                    }
+                    for (int j = 0; j < sizeB; j++) {
+                        printf("B [%d] =", j + 1);
+                        scanf("%d", &matrizB[j]);
+                        fflush(stdin);
+                    }
+
+                    printf("Producto punto: %d \n", productopunto(matrizA, matrizB, sizeA));
+
+                } else {
+                    printf("Ambas matrices deben ser iguales...\n");
+
+                }
+
                 break;
             case 8:
                 printf("Multiplicacion de matrices \n");
@@ -437,8 +465,12 @@ void fechas(char message[]) {
 
 
 /* Responsable alejandro*/
-void productopunto(){
-
+int productopunto(int matrizA[], int matrizB[], int sizeMatriz){
+int sizeTotal = 0;
+    for (int i = 0; i < sizeMatriz; ++i) {
+        sizeTotal += matrizA[i] * matrizB[i];
+    }
+    return sizeTotal;
 }
 
 /* Responsable andres*/
