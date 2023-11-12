@@ -32,7 +32,8 @@ void fechas(char[] );
 
 void productopunto();
 
-void multiplicacionMatrices();
+int**  llenarMatriz(int, int);
+int** multiplicacionMatrices(int **,int, int, int **, int, int);
 
 void matrizMagica(int );
 
@@ -121,7 +122,49 @@ int main() {
                 productopunto();
                 break;
             case 8:
-                multiplicacionMatrices();
+                printf("Multiplicacion de matrices \n");
+                int alto1, ancho1,alto2, ancho2;
+                printf("Ingrese el alto de la matriz 1: ");
+                scanf("%d", &alto1);
+                printf("Ingrese el ancho de la matriz 1: ");
+                scanf("%d", &ancho1);
+                int** matriz1 = llenarMatriz(alto1, ancho1);
+                printf("Matriz 1: \n");
+                for (int i = 0; i < alto1; ++i) {
+                    for (int j = 0; j < ancho1; ++j) {
+                        printf("%d ", matriz1[i][j]);
+                    }
+                    printf("\n");
+                }
+                printf("Ingrese el alto de la matriz 2: ");
+                scanf("%d", &alto2);
+                printf("Ingrese el ancho de la matriz 2: ");
+                scanf("%d", &ancho2);
+                int** matriz2 = llenarMatriz(alto2, ancho2);
+                printf("Matriz 2: \n");
+                for (int i = 0; i < alto2; ++i) {
+                    for (int j = 0; j < ancho2; ++j) {
+                        printf("%d ", matriz2[i][j]);
+                    }
+                    printf("\n");
+                }
+                int ** matriz3 = multiplicacionMatrices(matriz1, alto1, ancho1, matriz2, alto2, ancho2);
+                if (matriz3 == NULL){
+                    printf("No se puede realizar la multiplicacion de matrices");
+                } else{
+                    printf("Matriz 3: \n");
+                    for (int i = 0; i < alto1; ++i) {
+                        for (int j = 0; j < ancho2; ++j) {
+                            printf("%d ", matriz3[i][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+
+
+
+
+
                 break;
             case 9:
                 printf("Ingrese un numero impar para generar la matriz ");
@@ -402,8 +445,44 @@ void productopunto(){
 
 //metodo para rellenar la matriz
 //metodo para multiplicar las matrices
-void multiplicacionMatrices(){
 
+int**  llenarMatriz(int alto, int ancho){
+    int** matriz;
+    matriz = (int**) malloc(alto * sizeof(int*));
+    for (int i = 0; i < alto; ++i) {
+        matriz[i] = (int*) malloc(ancho * sizeof(int));
+    }
+    for (int i = 0; i < alto; ++i) {
+        for (int j = 0; j < ancho; ++j) {
+            matriz[i][j] = (rand() % 10)+1;
+        }
+    }
+    return matriz;
+}
+
+int** multiplicacionMatrices(int** matriz1,int alto1, int ancho1, int** matriz2, int alto2, int ancho2){
+if(ancho1 != alto2){
+    return NULL;}
+else{
+    int** matriz3;
+    matriz3 = (int**) malloc(alto1 * sizeof(int*));
+    for (int i = 0; i < alto1; ++i) {
+        matriz3[i] = (int*) malloc(ancho2 * sizeof(int));
+    }
+    for (int i = 0; i < alto1; ++i) {
+        for (int j = 0; j < ancho2; ++j) {
+            matriz3[i][j] = 0;
+        }
+    }
+    for (int i = 0; i < alto1; ++i) {
+        for (int j = 0; j < ancho2; ++j) {
+            for (int k = 0; k < ancho1; ++k) {
+                matriz3[i][j] += matriz1[i][k] * matriz2[k][j];
+            }
+        }
+    }
+    return matriz3;
+}
 
 }
 
