@@ -106,12 +106,12 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Taller_Progra_III" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Taller_Progra_III" TARGET_NAME="Taller_Progra_III" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Taller_Progra_III" RUN_TARGET_NAME="Taller_Progra_III">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Taller_Progra_III" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Taller_Progra_III" TARGET_NAME="Taller_Progra_III" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Taller_Progra_III" RUN_TARGET_NAME="Taller_Progra_III">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -133,6 +133,7 @@
       <workItem from="1699714341046" duration="719000" />
       <workItem from="1699715824246" duration="4818000" />
       <workItem from="1699806681785" duration="2042000" />
+      <workItem from="1699840761323" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="creacion del proyecto">
       <option name="closed" value="true" />

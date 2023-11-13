@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include <string.h>
-#include <ctype.h>
 #include <math.h>
 #include <conio.h>
 #include <time.h>
@@ -15,7 +13,6 @@ static bool factores = false;
 
 int numeroRomano(char[]);
 
-void factoresPrimos(int);
 void getfactores(char *mensaje);
 void desmontar_factor(int number);
 int primo(int number);
@@ -474,9 +471,6 @@ int sizeTotal = 0;
 }
 
 /* Responsable andres*/
-
-//metodo para rellenar la matriz
-//metodo para multiplicar las matrices
 
 int**  llenarMatriz(int alto, int ancho){
     int** matriz;
